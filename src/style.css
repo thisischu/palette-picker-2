@@ -13,3 +13,71 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+body{
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: center;
+}
+
+.palette-input-form{
+  display: flex;
+  justify-content: center;
+}
+
+#palette-form{
+  background-color: rgb(60, 60, 60);
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+  height:410px;
+}
+
+input[type=text] {
+  background-color: gray;
+  border: white, 1px;
+}
+
+input[type=color] {
+  background-color: gray;
+  border: none;
+}
+
+
+#form-color{
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.color-pick {
+  padding-bottom: 10px ;
+}
+
+#temp-text {
+  text-align: left;
+  padding-left: 45px;
+}
+
+#form-temp {
+  padding-bottom: 10px;
+}
+
+#palette-submit {
+  padding-bottom: 10px;
+}
+
+#palette-submit-button {
+  background-color: #808080;
+  color: white;
+  border: none;
+  height: 20px;
+}
+
+#palette-heading {
+  text-align: center;
+}
+

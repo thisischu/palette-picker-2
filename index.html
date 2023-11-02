@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,71 @@
     <title>Palette Picker</title>
   </head>
   <body>
-    <div id="app"></div>
+    <header>
+      <h1>Palette Picker</h1>
+    </header>
+
+    <main>
+      <section class="palette-input-form">
+        <div id="palette-form">
+          <h2>Add a Palette</h2>
+          <form id="form">
+            <div id="palette-title">
+              <label for="paletteTitleInput">Palette Title:</label>
+              <input type="text" id="paletteTitleInput" />
+            </div>
+
+            <div id="form-color">
+              <div class="color-pick">
+                <label for="color1">Color #1</label>
+                <input
+                  type="color"
+                  id="color1"
+                  name="color1"
+                  value="#ff0000"
+                />
+              </div>
+              <div class="color-pick">
+                <label for="color2">Color #2</label>
+                <input
+                  type="color"
+                  id="color2"
+                  name="color2"
+                  value="#ff0000"
+                />
+              </div>
+              <div class="color-pick">
+                <label for="color3">Color #3</label>
+                <input
+                  type="color"
+                  id="color3"
+                  name="color3"
+                  value="#ff0000"
+                />
+              </div>
+            </div>
+            <div id="form-temp">
+              <p id="temp-text">Temperature</p>
+              <input type="radio" id="warm" name="temperature" value="warm" />
+              <label for="warm">Warm</label>
+              <input type="radio" id="neutral" name="temperature" value="neutral" />
+              <label for="neutral">Neutral</label>
+              <input type="radio" id="cool" name="temperature" value="cool" />
+              <label for="cool">Cool</label>
+            </div>
+
+            <div id="palette-submit">
+              <button id="palette-submit-button" type="submit">Create the palette</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <h2 id="palette-heading">Palettes</h2>
+
+      <section id="user-made-palettes">
+        <p>This is a div</p>
+      </section>
+    </main>
     <script type="module" src="/src/main.js"></script>
-  </body>
+    </body>  
 </html>
