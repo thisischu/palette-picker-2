@@ -1,7 +1,7 @@
 //import uuid with an alias so that it is more descriptive
 //npm i uuid (Universally unique id)
 
-import { v4 as uuidV4 } from "uuid";
+// import { v4 as uuidV4 } from "uuid";
 
 import paletteData from "./palette.json" assert {type: "json"};
 
@@ -97,7 +97,23 @@ const displayLocalStorage = () => {
     })
 }
 
+
 displayLocalStorage()
+
+const displayDefault = () => {
+  paletteData.forEach( palette => {
+    const { title, colors, temperature } = palette;
+    const [color1, color2, color3] = colors;
+
+    displayPalette(title, color1, color2, color3, temperature)
+  }) 
+
+}
+
+if (localStorage.length <= 0){
+  displayDefault()
+}
+
 
 // console.log("uuid", uuidV4())
 
