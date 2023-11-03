@@ -81,3 +81,33 @@ input[type=color] {
   text-align: center;
 }
 
+/* --------------------------- */
+
+#user-made-palettes{
+  /* background-color: #484848; */
+  border-radius: 0px 50px 0px ;
+  width: 300px;
+  text-align: center;
+
+}
+
+.default-palette {
+  background-color: gray;
+}
+.default-palette-title{
+  text-align: center;
+}
+
+.background-color-div{
+  background-color: white;
+}
+
+
+.default-palette-content{
+  display: flex;
+  justify-content: space-around;
+}
+
+.copy-text-div {
+  
+}

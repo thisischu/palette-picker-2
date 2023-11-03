@@ -2,39 +2,102 @@
 //npm i uuid (Universally unique id)
 
 import { v4 as uuidV4 } from "uuid";
-import paletteData from "./palette.json";
+
+import paletteData from "./palette.json" assert {type: "json"};
+
 import { getPalettes } from "./data-store";
-import "./style.css";
+
+const setLocalStorageKey = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
+};
+
+const getLocalStorageValue = (key) => {
+  try {
+    return JSON.parse(localStorage.getItem(key));
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};
 
 // Add an event listener to the form
-const form = document.getElementById("form");
+const getEl = (el) => document.querySelector(el);
+const form = getEl("#form");
+form.reset()
+
+const createEl = (el) => document.createElement(el);
+
+//display palette
+const displayPalette = (title, c1, c2, c3, temp) => {
+ //get Elements
+ const userCard = getEl(".palette-cards");
+
+ //create
+
+ const li = createEl("li");
+
+ const paletteCard = createEl("div");
+ const paletteTitle = createEl("h3");
+ const paletteCardContent = createEl("div");
+ const color1 = createEl("p");
+ const color2 = createEl("p");
+ const color3 = createEl("p");
+ const deletePalette = createEl("button");
+ const paletteTemp = createEl("p");
+
+ //add content
+ paletteTitle.innerHTML = `<h3>${title}</h3>`;
+
+ color1.innerHTML = `<p style="background-color:${c1};">${c1}</p>`;
+
+ color2.innerHTML = `<p style="background-color:${c2};">${c2}</p>`;
+
+ color3.innerHTML = `<p style="background-color:${c3};">${c3}</p>`;
+
+ paletteTemp.innerHTML = `<p>${temp}</p>`;
+
+ deletePalette.innerHTML = "delete palette";
+
+ //append data
+ paletteCard.appendChild(paletteTitle);
+
+ paletteCardContent.append(color1,color2,color3)
+
+ paletteCard.append(paletteCardContent, deletePalette, paletteTemp)
+
+ li.appendChild(paletteCard);
+
+ userCard.appendChild(li);
+}
 
 form.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the default form submission behavior
+  event.preventDefault();
 
-  // Get values from the form inputs
-  const paletteTitle = document.getElementById("paletteTitleInput").value;
-  const color1 = document.getElementById("color1").value;
-  const color2 = document.getElementById("color2").value;
-  const color3 = document.getElementById("color3").value;
+  //get formData
+  const formData = new FormData(event.target);
 
-  let temperature;
-  const temperatureOptions = document.getElementsByName("temperature");
+  //turn form data into obj to access
+  const {title, color1, color2, color3, temperature} = Object.fromEntries(formData);
+
+  //saving to local storage
+  setLocalStorageKey(title, {title, color1, color2, color3, temperature})
+
+
+  displayPalette(title, color1, color2, color3, temperature)
   
-  for (const option of temperatureOptions) {
-    if (option.checked) {
-      temperature = option.value;
-      break;
-    }
-  }
 
-  // You can now use the extracted values as needed, for example, send them to a server
-  console.log("Palette Title: " + paletteTitle);
-  console.log("Color 1: " + color1);
-  console.log("Color 2: " + color2);
-  console.log("Color 3: " + color3);
-  console.log("Temperature: " + temperature);
+  form.reset()
 });
+
+//display local storage items
+const displayLocalStorage = () => {
+    Object.keys(localStorage).forEach( key => {
+        const {title, color1, color2, color3, temperature} = getLocalStorageValue(key)
+        displayPalette(title, color1, color2, color3, temperature)
+    })
+}
+
+displayLocalStorage()
 
 // console.log("uuid", uuidV4())
 

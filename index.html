@@ -5,6 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Palette Picker</title>
+    <link rel="stylesheet" href="./src/style.css">
   </head>
   <body>
     <header>
@@ -16,9 +17,10 @@
         <div id="palette-form">
           <h2>Add a Palette</h2>
           <form id="form">
+
             <div id="palette-title">
               <label for="paletteTitleInput">Palette Title:</label>
-              <input type="text" id="paletteTitleInput" />
+              <input name="title" type="text" id="paletteTitleInput"/>
             </div>
 
             <div id="form-color">
@@ -69,9 +71,13 @@
       <h2 id="palette-heading">Palettes</h2>
 
       <section id="user-made-palettes">
-        <p>This is a div</p>
+        
+        <ul class="palette-cards">
+          
+        </ul>
+
       </section>
     </main>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="./src/main.js"></script>
     </body>  
 </html>
